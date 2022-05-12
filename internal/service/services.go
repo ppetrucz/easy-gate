@@ -34,7 +34,6 @@ func (s *Service) getServices(cfg *config.Config, addr string) []service {
 				Icon: cfgService.Icon,
 				Name: cfgService.Name,
 				URL:  cfgService.URL,
-				Category: cfgService.Category,
 			}
 			services = append(services, service)
 		}
