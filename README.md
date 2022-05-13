@@ -30,6 +30,15 @@ Easy Gate is a simple web application built in Go and React that acts as the hom
 - Customizable theme.
 - Run as dependecy free standalone executable or as a Docker image.
 
+### Future updates/features
+
+- Persistant data storage
+- New section: Most popular
+- New section: Announcement with calendar
+- Additional/Improved UI components
+- Extensive branding settings
+- Minimal login for additional service filtering
+
 ## Deployment
 
 ### Standalone Executable
