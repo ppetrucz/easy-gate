@@ -11,7 +11,7 @@ pipeline {
         stage('Build easy-gate image') {
             agent {
                 kubernetes {
-                    yamlFile 'BuilderPod.yaml'
+                    yamlFile 'jenkins/BuilderPod.yaml'
                 }
             }
             stages {
