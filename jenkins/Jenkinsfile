@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+
+    environment {
+        IMAGE = "kubemaster/easy-gate"
+        TAG = "jenkins"
+        // TAG = $GIT_COMMIT
+    }
+
+    stages {
+        stage('Build easy-gate image') {
+            agent {
+                kubemaster {
+                    yamlFile 'BuilderPod.yaml'
+                }
+            }
+            stages {
+                stage('Build and push image') {
+                    steps {
+                        sh "buildah bud -t ${IMAGE}:${TAG} . && \
+                        buildah login -u kubemaster -p T!gris.1 && \
+                        buildah push ${IMAGE}:${TAG}"
+                    }
+                }
+            }
+        }
+    }
+}

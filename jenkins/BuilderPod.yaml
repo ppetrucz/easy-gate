@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: easy-gate
+spec:
+  containers:
+    - name: maven
+      image: mgoltzsche/podman:latest
+      command:
+        - cat
+      tty: true
