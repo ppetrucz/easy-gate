@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Build easy-gate image') {
             agent {
-                kubemaster {
+                kubernetes {
                     yamlFile 'BuilderPod.yaml'
                 }
             }
