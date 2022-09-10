@@ -13,3 +13,9 @@ spec:
       tty: true
       securityContext:
         privileged: true
+      requests:
+        memory: "256Mi"
+        cpu: "500m"
+      limits:
+        memory: "1024Mi"
+        cpu: "1000m"
