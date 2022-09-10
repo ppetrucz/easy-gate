@@ -8,14 +8,13 @@ pipeline {
 
     environment {
         IMAGE = "kubemaster/easy-gate"
-        TAG = "jenkins"
-        // TAG = $GIT_COMMIT
+        TAG = ${GIT_COMMIT,length=6}
     }
 
     stages {
         stage('Build easy-gate image') {
             steps {
-                sh "echo ${GIT_COMMIT}"
+                sh "echo ${TAG}"
                 // sh "podman build -t ${IMAGE}:${TAG} . && \
                 // podman login -u kubemaster -p T!gris.1 && \
                 // podman push ${IMAGE}:${TAG}"
