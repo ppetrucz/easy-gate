@@ -8,7 +8,7 @@ pipeline {
 
     environment {
         IMAGE = "kubemaster/easy-gate"
-        TAG = "${GIT_COMMIT,length=6}"
+        TAG = GIT_COMMIT.take(7)
     }
 
     stages {
