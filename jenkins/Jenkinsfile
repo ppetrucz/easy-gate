@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    gent {
+        kubernetes {
+            defaultContainer 'podman'
+            yamlFile 'jenkins/BuilderPod.yaml'
+        }
+    }
 
     environment {
         IMAGE = "kubemaster/easy-gate"
@@ -9,11 +14,6 @@ pipeline {
 
     stages {
         stage('Build easy-gate image') {
-            agent {
-                kubernetes {
-                    yamlFile 'jenkins/BuilderPod.yaml'
-                }
-            }
             steps {
                 sh "podman build -t ${IMAGE}:${TAG} . && \
                 podman login -u kubemaster -p T!gris.1 && \
