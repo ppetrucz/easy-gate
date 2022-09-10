@@ -9,5 +9,8 @@ spec:
     - name: builder
       image: tomkukral/buildah:latest
       command:
-        - cat
+        - sleep
+        - "1000000"
       tty: true
+      securityContext:
+        privileged: true
