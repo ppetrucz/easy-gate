@@ -9,7 +9,7 @@ COPY . .
 COPY --from=web-builder ./easy-gate-web/build ./web/build
 RUN make easy-gate
 
-FROM docker.io/scratch AS easy-gate
+FROM scratch AS easy-gate
 WORKDIR /etc/easy-gate
 COPY ./assets/easy-gate.json .
 WORKDIR /usr/bin
