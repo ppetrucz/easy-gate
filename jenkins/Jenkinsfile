@@ -2,7 +2,7 @@ pipeline {
     agent {
         kubernetes {
             defaultContainer 'podman'
-            yamlFile 'jenkins/BuilderPod.yaml'
+            yamlFile 'jenkins/PodmanPod.yaml'
         }
     }
 
