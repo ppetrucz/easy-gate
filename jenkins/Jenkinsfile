@@ -15,9 +15,9 @@ pipeline {
     stages {
         stage('Build easy-gate image') {
             steps {
-                sh "podman build -t ${REGISTRY}/${IMAGE}:${TAG} . && \
-                podman login -u kubemaster -p T!gris.1 && \
-                podman push ${REGISTRY}/${IMAGE}:${TAG}"
+                sh "podman build -t ${REGISTRY}/${IMAGE}:${TAG} ."
+                sh "podman login -u kubemaster -p T!gris.1"
+                sh "podman push ${REGISTRY}/${IMAGE}:${TAG}"
             }
         }
     }
