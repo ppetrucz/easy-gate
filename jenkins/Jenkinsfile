@@ -14,14 +14,10 @@ pipeline {
                     yamlFile 'jenkins/BuilderPod.yaml'
                 }
             }
-            stages {
-                stage('Build and push image') {
-                    steps {
-                        sh "podman build -t ${IMAGE}:${TAG} . && \
-                        podman login -u kubemaster -p T!gris.1 && \
-                        podman push ${IMAGE}:${TAG}"
-                    }
-                }
+            steps {
+                sh "podman build -t ${IMAGE}:${TAG} . && \
+                podman login -u kubemaster -p T!gris.1 && \
+                podman push ${IMAGE}:${TAG}"
             }
         }
     }
