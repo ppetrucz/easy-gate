@@ -7,6 +7,7 @@ pipeline {
     }
 
     environment {
+        REGISTRY = "docker.io"
         IMAGE = "kubemaster/easy-gate"
         TAG = GIT_COMMIT.take(7)
     }
@@ -14,7 +15,7 @@ pipeline {
     stages {
         stage('Build easy-gate image') {
             steps {
-                sh "podman build -t ${IMAGE}:${TAG} . && \
+                sh "podman build -t ${REGISTRY}/${IMAGE}:${TAG} . && \
                 podman login -u kubemaster -p T!gris.1 && \
                 podman push ${IMAGE}:${TAG}"
             }
