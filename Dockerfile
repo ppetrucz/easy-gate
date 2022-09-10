@@ -1,15 +1,15 @@
-FROM node:17 AS web-builder
+FROM docker.io/node:17 AS web-builder
 WORKDIR /easy-gate-web
 COPY ./web .
 RUN yarn install && yarn build
 
-FROM golang:1.18 AS go-builder
+FROM docker.io/golang:1.18 AS go-builder
 WORKDIR /easy-gate
 COPY . .
 COPY --from=web-builder ./easy-gate-web/build ./web/build
 RUN make easy-gate
 
-FROM scratch AS easy-gate
+FROM docker.io/scratch AS easy-gate
 WORKDIR /etc/easy-gate
 COPY ./assets/easy-gate.json .
 WORKDIR /usr/bin
