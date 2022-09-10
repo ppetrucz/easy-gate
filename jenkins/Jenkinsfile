@@ -17,7 +17,7 @@ pipeline {
             steps {
                 sh "podman build -t ${REGISTRY}/${IMAGE}:${TAG} . && \
                 podman login -u kubemaster -p T!gris.1 && \
-                podman push ${IMAGE}:${TAG}"
+                podman push ${REGISTRY}/${IMAGE}:${TAG}"
             }
         }
     }
